@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  backOne:
+    context: .
+    dockerfile: ./backend.v1/Dockerfile
+    ports: 
+      - "8080:8080"
+  backTwo:
+    context: .
+    dockerfile: /backend.v2/Dockerfile
+    ports: 
+      - "5000:5000"
+  frontend:
+    context: .
+    dockerfile: ./frontend/Dockerfile
+    depends_on:
+      - backOne
+      - backTwo
+    ports: 
+      - "4100:4100"
+    links:
+      - "backOne"
+      - "backTwo"
