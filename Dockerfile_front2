@@ -1,0 +1,16 @@
+FROM node:12.14.0 AS base
+
+# Create app directory
+WORKDIR \frontend
+COPY package*.json ./
+COPY . . 
+# This command starts up the app
+CMD npm install
+CMD npm run start
+EXPOSE 4100
+
+
+
+
+
+
