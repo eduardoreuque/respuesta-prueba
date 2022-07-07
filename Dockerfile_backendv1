@@ -1,0 +1,17 @@
+FROM golang:1.12.14 AS base
+ENV GOPROXY=https://goproxy.io
+RUN mkdir /backend.v1
+
+ADD . /backend.v1
+
+WORKDIR /backend.v1
+
+
+RUN go mod download
+
+RUN go build -o /backend.v1/bin/server
+
+EXPOSE 8080
+
+ENTRYPOINT ["/backend.v1/bin/server"]
+
