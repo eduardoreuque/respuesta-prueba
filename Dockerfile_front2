@@ -4,7 +4,7 @@ FROM node:12.14.0 AS base
 WORKDIR \frontend
 COPY package*.json ./
 COPY . . 
-# This command starts up the app
+# This command starts up the appasdas
 CMD npm install
 CMD npm run start
 EXPOSE 4100
